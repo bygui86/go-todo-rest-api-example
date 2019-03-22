@@ -28,6 +28,7 @@ func GetConfig() *Config {
 # Build and Run
 cd go-todo-rest-api-example
 go build
+docker run -d --name mysql -e MYSQL_DATABASE=golang -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=user -e MYSQL_PASSWORD=secret -p 3306:3306 -p 33060:33060 mysql
 ./go-todo-rest-api-example
 
 # API Endpoint : http://127.0.0.1:3000

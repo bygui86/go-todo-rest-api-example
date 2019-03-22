@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "1371cdde-e62c-4407-bc2e-3bf22ac7a8ed",
+		"name": "GOLANG_REST-MYSQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get projects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"project-1\",\n\t\"archived\": false,\n\t\"tasks\": [\n\t\t{\n\t\t\t\"title\": \"task-1\",\n\t\t\t\"priority\": \"1\",\n\t\t\t\"deadline\": \"2020-01-13T12:45:30Z\",\n\t\t\t\"done\": false\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get project",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f7e75ce-de11-4160-82cc-5cf8adeb870b",
+						"exec": [
+							"",
+							"pm.globals.set(\"project-title\", \"project-1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/{{project-title}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"{{project-title}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update project",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7571d6ab-e2ef-4945-ac80-1dab779097c5",
+						"exec": [
+							"",
+							"pm.globals.set(\"project-title\", \"project-1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"project-1\",\n\t\"tasks\": [\n\t\t{\n\t\t\t\"title\": \"task-2\",\n\t\t\t\"priority\": \"2\",\n\t\t\t\"deadline\": \"2020-01-13T12:45:30Z\",\n\t\t\t\"done\": true\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/{{project-title}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"{{project-title}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get project tasks",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f7e75ce-de11-4160-82cc-5cf8adeb870b",
+						"exec": [
+							"",
+							"pm.globals.set(\"project-title\", \"project-1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/{{project-title}}/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"{{project-title}}",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete project",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b32a9dc0-6a72-4c18-8d2e-45284cc9813b",
+						"exec": [
+							"",
+							"pm.globals.set(\"project-title\", \"project-1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/projects/{{project-title}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"{{project-title}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
